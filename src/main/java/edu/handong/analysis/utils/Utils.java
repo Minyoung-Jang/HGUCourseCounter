@@ -15,8 +15,12 @@ public class Utils {
 	{
         ArrayList<String> lines = new ArrayList<String>();
         String bufline;
+        
 		try{
             File fileName = new File(file);
+            if(!fileName.exists()) {
+            	throw new NotEnoughArgumentException("The file path does not exist. Please check your CLI argument!");
+            }
             FileReader filereader = new FileReader(fileName);
             BufferedReader bufReader = new BufferedReader(filereader);
             while((bufline = bufReader.readLine())!=null)
@@ -28,6 +32,8 @@ public class Utils {
         	System.out.println(e);
         }catch(IOException e){
             System.out.println(e);
+        }catch(NotEnoughArgumentException e) {
+        	System.out.println(e);
         }
 		return lines;
 	}
