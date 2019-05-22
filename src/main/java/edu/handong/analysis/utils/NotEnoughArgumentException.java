@@ -1,13 +1,17 @@
 package edu.handong.analysis.utils;
 
-public class NotEnoughArgumentException extends Exception {
 
+@SuppressWarnings("serial")
+public class NotEnoughArgumentException extends Exception {
+	
 	public NotEnoughArgumentException() {
-		super("There is not enough argument excetption!");
+		super.setStackTrace(getStackTrace());
+		System.out.println("There is not enough argument excetption!");
 	}
 	
 	public NotEnoughArgumentException(String message) {
-		super("There is not enough argument excetption!\n" + message);
+		super.setStackTrace(getStackTrace());
+		System.out.println("There is not enough argument excetption!\n" + message);
 	}
 
 
