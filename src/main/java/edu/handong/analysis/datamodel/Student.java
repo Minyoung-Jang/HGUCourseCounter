@@ -7,6 +7,14 @@ public class Student {
 
 	private String studentId;
 	private ArrayList<Course> coursesTaken;
+	public ArrayList<Course> getCoursesTaken() {
+		return coursesTaken;
+	}
+
+	public void setCoursesTaken(ArrayList<Course> coursesTaken) {
+		this.coursesTaken = coursesTaken;
+	}
+
 	private HashMap<String, Integer> semestersByYearAndSemester;
 
 	public Student(String studentId) {
