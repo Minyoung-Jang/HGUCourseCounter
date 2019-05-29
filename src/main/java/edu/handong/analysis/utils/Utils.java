@@ -22,7 +22,7 @@ public class Utils {
 		FileReader fileReader = null;
 		CSVParser csvFileParser = null;
 		
-		CSVFormat csvFileFormat = CSVFormat.EXCEL.
+		CSVFormat csvFileFormat = CSVFormat.DEFAULT.
 				withIgnoreHeaderCase().
 				withIgnoreSurroundingSpaces().
 				withIgnoreEmptyLines(true).

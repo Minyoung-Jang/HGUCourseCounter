@@ -9,8 +9,7 @@ import org.apache.commons.csv.CSVRecord;
 
 import edu.handong.analysis.datamodel.Course;
 import edu.handong.analysis.datamodel.Student;
-//import edu.handong.analysis.utils.CommonCLI;
-//import edu.handong.analysis.utils.NotEnoughArgumentException;
+import edu.handong.analysis.utils.NotEnoughArgumentException;
 import edu.handong.analysis.utils.Utils;
 
 import org.apache.commons.cli.CommandLine;
@@ -45,7 +44,7 @@ public class HGUCoursePatternAnalyzer {
 		if(parseOptions(options, args)){
 			if (help){
 				printHelp(options);
-				return;
+				System.exit(0);;
 			}
 		
 			String dataPath = input; // file to be analyzed
@@ -226,7 +225,7 @@ public class HGUCoursePatternAnalyzer {
 		return countNumber;
 	}
 	
-	private boolean parseOptions(Options options, String[] args) {
+	private boolean parseOptions(Options options, String[] args)  {
 		CommandLineParser parser = new DefaultParser();
 
 		try {
@@ -244,6 +243,15 @@ public class HGUCoursePatternAnalyzer {
 		} catch (Exception e) {
 			printHelp(options);
 			return false;
+		}
+		
+		try {
+			if(args.length<3) {
+				throw new NotEnoughArgumentException();
+			}
+		}catch (NotEnoughArgumentException e) {
+				System.out.println(e.getMessage());
+				System.exit(0);
 		}
 
 		return true;
